@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Details</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Task Details</h1>
+    
+    <% if (task) { %>
+        <div class="task">
+            <h2><%= task.title %></h2>
+            <p><%= task.description %></p>
+            <p>Created At: <%= task.createdAt ? task.createdAt.toLocaleString() : 'N/A' %></p>
+            <p>Updated At: <%= task.updatedAt ? task.updatedAt.toLocaleString() : 'N/A' %></p>
+
+            <% } else { %>
+                <p>Task not found.</p>
+            <% } %>
+            <a href="/tasks/edit/<%= task.id %>">Edit Task</a>
+            <form method="POST" action="/tasks/<%= task.id %>?_method=DELETE" onsubmit="return confirm('Are you sure you want to delete this task?')">
+                <button type="submit">Delete Task</button>
+        </div>
+    <a href="/">Back to Task List</a>
+</body>
+</html>

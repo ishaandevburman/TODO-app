@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= mode==='add' ? 'Add Task' : 'Edit Task' %>
+  </title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <h1>
+    <%= mode==='add' ? 'Add Task' : 'Edit Task' %>
+  </h1>
+  <form method="POST" action="<%= mode === 'add' ? '/tasks' : '/tasks/' + task.id + '?_method=PUT' %>">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" value="<%= task.title %>" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required><%= task.description %></textarea>
+
+    <button type="submit">
+      <%= mode==='add' ? 'Add' : 'Update' %> Task
+    </button>
+  </form>
+
+  <a href="/">Back to Task List</a>
+</body>
+
+</html>
