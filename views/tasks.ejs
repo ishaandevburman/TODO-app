@@ -3,25 +3,28 @@
 
 <head>
   <title>Task List</title>
-  <link rel="stylesheet" href="/styles.css">
+  <!-- Include the DaisyUI CSS file -->
+  <link href="/output.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
-  <h1>Task List</h1>
-  <ul>
-    <% tasks.forEach(task=> { %>
-      <li class="task">
-        <h2>
-          <%= task.title %>
-        </h2>
-        <p>
-          <%= task.description %>
-        </p>
-        <a href="/tasks/<%= task.id %>">View Details</a>
-      </li>
-      <% }); %>
-  </ul>
-  <a href="/add">Add Task</a>
+<body class="bg-gray-900 text-white p-8">
+  <h1 class="text-3xl font-semibold mb-4">Task List</h1>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <% tasks.forEach(task => { %>
+    <div class="bg-gray-800 shadow-lg rounded-lg p-4">
+      <h2 class="text-xl font-semibold mb-2 truncate"><%= task.title %></h2>
+      <p class="text-gray-200 mb-2 truncate"><%= task.description %></p>
+      <a href="/tasks/<%= task.id %>"
+         class="text-blue-500 hover:underline">
+        View Details
+      </a>
+    </div>
+    <% }); %>
+  </div>
+  <a href="/add"
+     class="block mt-4 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg text-center text-lg">
+    Add Task
+  </a>
 </body>
 
 </html>
